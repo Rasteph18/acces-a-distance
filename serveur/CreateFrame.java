@@ -1,4 +1,4 @@
-package client.affichage;
+package serveur.affichage;
 
 import java.awt.BorderLayout;
 import java.beans.PropertyVetoException;
@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 
-import client.evenement.SendEvent;
+import serveur.evenement.SendEvent;
 
 public class CreateFrame extends Thread {
 

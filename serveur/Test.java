@@ -1,12 +1,37 @@
 package serveur.principal;
 
-import serveur.affichage.Password;
+import java.net.Socket;
+import javax.swing.JOptionPane;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+
+import serveur.affichage.*;
+import serveur.commande.Command;
+import serveur.evenement.*;
 
 public class Test {
-    public static void main(String[] args){
-		Password frame1= new Password();
-		frame1.setSize(300,80); 				
-    	frame1.setLocation(500,300);
-		frame1.setVisible(true);	 
-	}
+    DataInputStream verification = null;
+    String width="",height="";
+    public static void main(String[] args) {
+        String ip = JOptionPane.showInputDialog("Entrer l'IP du client");
+		new Test().initialize(ip, Integer.parseInt("5555"));
+    }
+
+    public void initialize(String ip, int port){
+        try{
+            
+            Socket sc = new Socket(ip,port);
+            System.out.println("Connecting to ...");
+            
+            verification = new DataInputStream(sc.getInputStream());
+            width = verification.readUTF();
+			height = verification.readUTF();
+
+            CreateFrame abc= new CreateFrame(sc,width,height);
+            
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+
+    }
 }

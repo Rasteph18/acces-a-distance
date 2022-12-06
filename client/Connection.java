@@ -1,4 +1,4 @@
-package serveur.connection;
+package client.connection;
 
 import java.awt.Dimension;
 import java.awt.GraphicsDevice;
@@ -13,21 +13,20 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import javax.swing.*;
 
-import serveur.capture.SendScreen;
-import serveur.evenement.ReceiveEvent;
+import client.capture.SendScreen;
+import client.evenement.ReceiveEvent;
 
 public class Connection {
     ServerSocket socket = null;
-	DataInputStream password = null;
 	DataOutputStream verify = null;
 	String width="";
 	String height="";
 
-    public Connection(int port,String value1){
+    public Connection(int port){
         Robot robot = null;
 		Rectangle rectangle = null;
 		try{
-			System.out.println("Attente de connection depuis le Client");
+			System.out.println("Attente de connection");
 			socket=new ServerSocket(port);
 			
 			GraphicsEnvironment gEnv = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -43,24 +42,18 @@ public class Connection {
 
 			while(true){
 				Socket sc=socket.accept();
-				password=new DataInputStream(sc.getInputStream());
-				verify=new DataOutputStream(sc.getOutputStream());
-				//String username=password.readUTF();
-				String pssword=password.readUTF();
 				
-				if(pssword.equals(value1)){
-					verify.writeUTF("valid");
-					verify.writeUTF(width);
-					verify.writeUTF(height);
-					new SendScreen(sc,robot,rectangle);
-					new ReceiveEvent(sc,robot);}
-				else{
-					verify.writeUTF("Invalid");
+				verify=new DataOutputStream(sc.getOutputStream());
+				
+				verify.writeUTF(width);
+				verify.writeUTF(height);
+				new SendScreen(sc,robot,rectangle);
+				new ReceiveEvent(sc,robot);
+	
 				}
+			}catch (Exception ex){
+				ex.printStackTrace();
 			}
-		}catch (Exception ex){
-			ex.printStackTrace();
-		}
 	}
 			
 	public void drawGUI(){

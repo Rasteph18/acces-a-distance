@@ -1,4 +1,4 @@
-package serveur.evenement;
+package client.evenement;
 
 import java.awt.Robot;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package client.evenement;
+package serveur.evenement;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -10,7 +10,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import javax.swing.JPanel;
 
-import client.commande.Command;
+import serveur.commande.Command;
 
 public class SendEvent implements KeyListener, MouseMotionListener, MouseListener{
     Socket cSocket = null;

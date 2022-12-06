@@ -1,4 +1,4 @@
-package client.affichage;
+package serveur.affichage;
 
 import java.awt.Graphics;
 import java.awt.Image;

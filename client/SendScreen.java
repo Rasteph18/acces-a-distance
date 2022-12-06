@@ -1,4 +1,4 @@
-package serveur.capture;
+package client.capture;
 
 import java.awt.Rectangle;
 import java.awt.Robot;
