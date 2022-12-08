@@ -1,4 +1,4 @@
-package client.connection;
+package src.connection;
 
 import java.awt.Dimension;
 import java.awt.GraphicsDevice;
@@ -13,8 +13,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import javax.swing.*;
 
-import client.capture.SendScreen;
-import client.evenement.ReceiveEvent;
+import src.capture.SendScreen;
+import src.evenement.ReceiveEvent;
 
 public class Connection {
     ServerSocket socket = null;

@@ -1,4 +1,4 @@
-package serveur.commande;
+package src.commande;
 
 public enum Command {
     PRESS_MOUSE(-1),

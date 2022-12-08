@@ -1,6 +1,6 @@
-package client.principal;
+package src.principal;
 
-import client.connection.Connection;
+import src.connection.Connection;
 
 public class Test {
     public static void main(String[] args){

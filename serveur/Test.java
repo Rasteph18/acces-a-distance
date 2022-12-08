@@ -1,13 +1,13 @@
-package serveur.principal;
+package src.principal;
 
 import java.net.Socket;
 import javax.swing.JOptionPane;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 
-import serveur.affichage.*;
-import serveur.commande.Command;
-import serveur.evenement.*;
+import src.affichage.*;
+import src.commande.Command;
+import src.evenement.*;
 
 public class Test {
     DataInputStream verification = null;
@@ -18,6 +18,7 @@ public class Test {
     }
 
     public void initialize(String ip, int port){
+        
         try{
             
             Socket sc = new Socket(ip,port);
@@ -27,7 +28,7 @@ public class Test {
             width = verification.readUTF();
 			height = verification.readUTF();
 
-            CreateFrame abc= new CreateFrame(sc,width,height);
+            CreateFrame frame = new CreateFrame(sc, width, height);
             
         } catch (Exception ex){
             ex.printStackTrace();

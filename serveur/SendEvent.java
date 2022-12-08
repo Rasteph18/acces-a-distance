@@ -1,4 +1,4 @@
-package serveur.evenement;
+package src.evenement;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -10,7 +10,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import javax.swing.JPanel;
 
-import serveur.commande.Command;
+import src.commande.Command;
 
 public class SendEvent implements KeyListener, MouseMotionListener, MouseListener{
     Socket cSocket = null;
@@ -27,7 +27,7 @@ public class SendEvent implements KeyListener, MouseMotionListener, MouseListene
 		this.width = width;
 		this.height = height;
 		w = Double.valueOf(width.trim()).doubleValue();
-		h = Double.valueOf(width.trim()).doubleValue();
+		h = Double.valueOf(height.trim()).doubleValue();
 
 
 		cPanel.addKeyListener(this);
