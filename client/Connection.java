@@ -17,17 +17,15 @@ import src.capture.SendScreen;
 import src.evenement.ReceiveEvent;
 
 public class Connection {
-    ServerSocket socket = null;
+   
 	DataOutputStream verify = null;
 	String width="";
 	String height="";
 
-    public Connection(int port){
+    public Connection(String ip, int port){
         Robot robot = null;
 		Rectangle rectangle = null;
 		try{
-			System.out.println("Attente de connection");
-			socket=new ServerSocket(port);
 			
 			GraphicsEnvironment gEnv = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			GraphicsDevice gDev = gEnv.getDefaultScreenDevice();
@@ -40,8 +38,9 @@ public class Connection {
 
 			drawGUI();
 
-			while(true){
-				Socket sc=socket.accept();
+			Socket sc = new Socket(ip,port);
+            System.out.println("Connecting to ...");
+				
 				
 				verify=new DataOutputStream(sc.getOutputStream());
 				
@@ -50,7 +49,6 @@ public class Connection {
 				new SendScreen(sc,robot,rectangle);
 				new ReceiveEvent(sc,robot);
 	
-				}
 			}catch (Exception ex){
 				ex.printStackTrace();
 			}
