@@ -31,7 +31,6 @@ public class ReceiveScreen extends Thread {
 				int count = 0;
 				do{
 					count+=in.read(bytes,count,bytes.length-count);
-					System.out.println(count);
 				}while(!(count>4 && bytes[count-2]==(byte)-1 && bytes[count-1]==(byte)-39));
 				
 				image1 = ImageIO.read(new ByteArrayInputStream(bytes));
